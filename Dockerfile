@@ -4,9 +4,9 @@ LABEL maintainer="eliott@nuclei.studio"
 
 ARG RUST_VERSION=nightly-2020-06-01
 ARG PROFILE=release
-ARG GIT_REPO=https://github.com/NodleCode/chain
-ARG BINARY_NAME=nodle-chain
-ARG PACKAGE_NAME=${BINARY_NAME}
+ARG GIT_REPO
+ARG BINARY_NAME
+ARG PACKAGE_NAME
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     clang \
@@ -25,7 +25,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     git clone ${GIT_REPO} source && \
     cd source && \
     cargo build -p ${PACKAGE_NAME} --${PROFILE} && \
-    cp target/${PROFILE}}/${BINARY_NAME} /node
+    cp target/${PROFILE}/${BINARY_NAME} /node
 
 # ===== SECOND STAGE ======
 
