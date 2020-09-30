@@ -11,18 +11,18 @@ jobs:
             matrix:
                 include:
                     # Add your own details here, just duplicate one of the entries below.
+                    # `binary` is the name of your binary as created by cargo
                     # `git` is your github repo URL (must be publicly accessible)
                     # `package` is the rust package to build that will produce your binary
-                    # `binary` is the name of your binary as created by cargo
 
                     -
+                        binary: nodle-chain
                         git: https://github.com/NodleCode/chain
                         package: nodle-chain
-                        binary: nodle-chain
                     -
+                        binary: polkadot
                         git: https://github.com/paritytech/polkadot
                         package: polkadot
-                        binary: polkadot
 
         runs-on: ubuntu-latest
         steps:
