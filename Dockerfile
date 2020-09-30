@@ -33,8 +33,7 @@ FROM ubuntu
 
 COPY --from=builder /node /usr/local/bin
 
-RUN groupadd -g 4242 runner && \
-    useradd -r -u 4242 -g runner runner
+RUN useradd --create-home runner
 
 USER runner
 EXPOSE 30333 9933 9944
