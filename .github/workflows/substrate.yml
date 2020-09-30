@@ -44,6 +44,7 @@ jobs:
                 uses: docker/build-push-action@v2
                 with:
                     push: ${{ github.event_name != 'pull_request' }}
+                    tag: latest
                     build-args: |
                         GIT_REPO=
                         PACKAGE_NAME=
