@@ -33,11 +33,7 @@ FROM ubuntu
 
 COPY --from=builder /node /usr/local/bin
 
-RUN mv /usr/share/ca* /tmp && \
-    rm -rf /usr/share/*  && \
-    mv /tmp/ca-certificates /usr/share/ && \
-    rm -rf /usr/lib/python* && \
-    groupadd -g 4242 runner && \
+RUN groupadd -g 4242 runner && \
     useradd -r -u 4242 -g runner runner
 
 USER runner
