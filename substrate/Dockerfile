@@ -33,7 +33,7 @@ FROM ubuntu
 
 COPY --from=builder /node /usr/local/bin
 
-RUN useradd --create-home runner && mkdir /data && chown runner:runner /data
+RUN useradd --create-home runner
 
 USER runner
 EXPOSE 30333 9933 9944
