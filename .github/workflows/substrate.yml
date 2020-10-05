@@ -1,3 +1,5 @@
+name: Nodes
+
 on:
     push:
         branches:
