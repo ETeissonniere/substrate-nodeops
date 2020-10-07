@@ -18,6 +18,15 @@ datasources:
   editable: false
 EOF
 
-# TODO: add dashboard
+cat << EOF > $CONFIG_DIR/dashboards/substrate.yml
+apiVersion: 1
+providers:
+- name: Prometheus
+  orgId: 1
+  allowUiUpdates: false
+  disableDeletion: false
+  options:
+    path: /var/lib/grafana/dashboards
+EOF
 
 /run.sh
