@@ -1,6 +1,8 @@
 #!/bin/sh
 
-cat << EOF > /tmp/grafana.yml
+export CONFIG_DIR=/etc/grafana/provisioning
+
+cat << EOF > $CONFIG_DIR/datasources/prometheus.yml
 apiVersion: 1
 deleteDatasources:
 - name: Prometheus
@@ -18,4 +20,4 @@ EOF
 
 # TODO: add dashboard
 
-/run.sh --config /tmp/grafana.yml
+/run.sh
