@@ -23,7 +23,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ["localhost:9090"]
-  - job_name: "substrate_node"
+  - job_name: "substrate_nodes"
     scrape_interval: 5s
     static_configs:
       - targets: $TARGET_STRING
