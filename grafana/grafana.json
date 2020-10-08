@@ -19,8 +19,7 @@
   "editable": true,
   "gnetId": 12425,
   "graphTooltip": 0,
-  "id": 2,
-  "iteration": 1602088290237,
+  "iteration": 1602160575711,
   "links": [],
   "panels": [
     {
@@ -1023,41 +1022,6 @@
       "type": "stat"
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                6
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "last"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Number of Leaves alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1112,15 +1076,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 6
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -1218,5 +1174,5 @@
   "timezone": "",
   "title": "Substrate Node Metrics",
   "uid": "twYeaxRMz",
-  "version": 12
+  "version": 1
 }
