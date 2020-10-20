@@ -2,7 +2,6 @@ FROM ubuntu as builder
 
 LABEL maintainer="eliott@nuclei.studio"
 
-ARG RUST_VERSION=nightly-2020-06-01
 ARG PROFILE=release
 ARG GIT_REPO
 ARG BINARY_NAME
@@ -18,12 +17,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     export PATH=$PATH:$HOME/.cargo/bin && \
-    rustup default stable && \
-    rustup uninstall nightly && \
-    rustup toolchain install ${RUST_VERSION} && \
-    rustup target add wasm32-unknown-unknown --toolchain ${RUST_VERSION} && \
     git clone ${GIT_REPO} source && \
     cd source && \
+    ./scripts/init.sh && \
     cargo build -p ${PACKAGE_NAME} --${PROFILE} && \
     cp target/${PROFILE}/${BINARY_NAME} /node
 
