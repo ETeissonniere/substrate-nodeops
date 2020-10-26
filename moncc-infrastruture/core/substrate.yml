@@ -1,0 +1,33 @@
+namespace: /eteissonniere
+substrate:
+  defines: runnable
+  containers:
+    defines: containers
+    node:
+      image: docker.io/eteissonniere/polkadot
+      image-tag: latest
+      user: root
+      entrypoint: <- `node --wasm-execution compiled --name ${node-name} --rpc-external --rpc-cors all --ws-external --ws-port ${wsrpc-port} --port ${p2p-port} --chain ${chain} --prometheus-external --prometheus-port ${prometheus-port} -d /data`
+      paths:
+        - <- `${moncc-volume-path}/${node-name}:/data`
+      ports:
+        - <- `0.0.0.0:${p2p-port}:${p2p-port}`
+        - <- `0.0.0.0:${wsrpc-port}:${wsrpc-port}`
+        - <- `0.0.0.0:${prometheus-port}:${prometheus-port}`
+  variables:
+    defines: variables
+    wsrpc-port:
+      type: int
+      value: 9944
+    p2p-port:
+      type: int
+      value: 30333
+    prometheus-port:
+      type: int
+      value: 9615
+    node-name:
+      type: string
+      value: "substrate"
+    chain:
+      type: string
+      value: "local"

@@ -1,0 +1,22 @@
+namespace: /eteissonniere
+prometheus:
+  defines: runnable
+  containers:
+    defines: containers
+    prometheus:
+      image: docker.io/eteissonniere/substrate-prometheus
+      image-tag: latest
+      user: root
+      entrypoint: <- `/entrypoint.sh ${target-nodes}`
+      paths:
+        - <- `${moncc-volume-path}/prometheus:/data`
+      ports:
+        - 0.0.0.0:9090:9090
+  variables:
+    defines: variables
+    target-nodes:
+      type: string
+      value: ""
+    node-port:
+      type: int
+      value: 9615

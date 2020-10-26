@@ -1,0 +1,56 @@
+namespace: /eteissonniere
+lbdemo-node-a:
+  defines: runnable
+  inherits: ./substrate
+  containers:
+    node:
+      image: docker.io/eteissonniere/polkadot
+      image-tag: latest
+  variables:
+    node-name:
+      value: "lbdemo-gateway-a"
+    chain:
+      value: "polkadot"
+lbdemo-node-b:
+  defines: runnable
+  inherits: ./substrate
+  containers:
+    node:
+      image: docker.io/eteissonniere/polkadot
+      image-tag: latest
+  variables:
+    node-name: "lbdemo-gateway-b"
+    chain: "polkadot"
+
+lbdemo-monitoring-prometheus:
+  defines: runnable
+  inherits: ./prometheus
+  variables:
+    target-nodes: <- get-hostname("eteissonniere/lbdemo-node-a", "node") `:${node-port}` " " get-hostname("eteissonniere/lbdemo-node-b", "node") `:${node-port}` concat-all
+
+lbdemo-monitoring-grafana:
+  defines: runnable
+  inherits: ./grafana
+  variables:
+    prometheus-endpoint: <- "http://" get-hostname("eteissonniere/lbdemo-monitoring-prometheus", "prometheus") ":9090" concat-all
+
+lbdemo:
+  defines: process-group
+  balancers:
+    defines: balancers
+    app-balancer:
+      port: 9944
+      type: http
+      health-check:
+        kind: tcp
+        request: ""
+        interval: 5
+        response: ""
+      instances:
+        - eteissonniere/lbdemo-node-a
+        - eteissonniere/lbdemo-node-b
+  runnable-list:
+    - eteissonniere/lbdemo-node-a
+    - eteissonniere/lbdemo-node-b
+    - eteissonniere/lbdemo-monitoring-prometheus
+    - eteissonniere/lbdemo-monitoring-grafana

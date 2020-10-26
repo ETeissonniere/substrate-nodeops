@@ -1,0 +1,23 @@
+namespace: /eteissonniere
+grafana:
+  defines: runnable
+  containers:
+    defines: containers
+    grafana:
+      image: docker.io/eteissonniere/substrate-grafana
+      image-tag: latest
+      entrypoint: <- `/entrypoint.sh ${prometheus-endpoint}`
+      ports:
+        - 0.0.0.0:80:3000
+      environment:
+        - <- `GF_SECURITY_ADMIN_PASSWORD=${password}`
+      paths:
+        - <- `${moncc-volume-path}/grafana:/var/lib/grafana grafana/grafana`
+  variables:
+    defines: variables
+    prometheus-endpoint:
+      type: string
+      value: ""
+    password:
+      type: string
+      value: "password"
