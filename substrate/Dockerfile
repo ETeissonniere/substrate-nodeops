@@ -22,7 +22,8 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     git clone ${GIT_REPO} source && \
     cd source && \
     git checkout ${GIT_BRANCH} && \
-    rustup default stable && \	
+    git submodule update --init --recursive && \
+    rustup default stable && \
     rustup uninstall nightly && \	
     rustup toolchain install ${RUST_VERSION} && \	
     rustup target add wasm32-unknown-unknown --toolchain ${RUST_VERSION} && \
