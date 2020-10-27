@@ -4,6 +4,7 @@ LABEL maintainer="eliott@nuclei.studio"
 
 ARG PROFILE=release
 ARG GIT_REPO
+ARG GIT_BRANCH
 ARG BINARY_NAME
 ARG PACKAGE_NAME
 
@@ -19,6 +20,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     export PATH=$PATH:$HOME/.cargo/bin && \
     git clone ${GIT_REPO} source && \
     cd source && \
+    git checkout ${GIT_BRANCH} && \
     ./scripts/init.sh && \
     cargo build -p ${PACKAGE_NAME} --${PROFILE} && \
     cp target/${PROFILE}/${BINARY_NAME} /node

@@ -15,21 +15,35 @@ jobs:
                 include:
                     # Add your own details here, just duplicate one of the entries below.
                     # `binary` is the name of your binary as created by cargo
+                    # `branch` is the git branch to fetch
                     # `git` is your github repo URL (must be publicly accessible)
                     # `package` is the rust package to build that will produce your binary
+                    # `name` is the name of the docker container to push
 
                     -
                         binary: nodle-chain
                         git: https://github.com/NodleCode/chain
+                        branch: master
                         package: nodle-chain
+                        name: nodle-chain
                     -
                         binary: polkadot
                         git: https://github.com/paritytech/polkadot
+                        branch: master
                         package: polkadot
+                        name: polkadot
                     -
                         binary: edgeware
                         git: https://github.com/hicommonwealth/edgeware-node
+                        branch: master
                         package: edgeware-cli
+                        name: edgeware
+                    -
+                        binary: edgeware
+                        git: https://github.com/hicommonwealth/edgeware-node
+                        branch: edgeware-frontier
+                        package: edgeware-cli
+                        name: edgeware-frontier
 
         runs-on: ubuntu-latest
         steps:
@@ -55,8 +69,9 @@ jobs:
                     push: ${{ github.event_name != 'pull_request' }}
                     cache-from: type=local,src=/tmp/.buildx-cache
                     cache-to: type=local,dest=/tmp/.buildx-cache
-                    tags: eteissonniere/${{ matrix.binary }}:latest
+                    tags: eteissonniere/${{ matrix.name }}:latest
                     build-args: |
                         GIT_REPO=${{ matrix.git }}
+                        GIT_BRANCH=${{ matrix.branch }}
                         PACKAGE_NAME=${{ matrix.package }}
                         BINARY_NAME=${{ matrix.binary }}
