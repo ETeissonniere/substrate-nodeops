@@ -44,6 +44,12 @@ jobs:
                         branch: edgeware-frontier
                         package: edgeware-cli
                         name: edgeware-frontier
+                    -
+                        binary: governance-os-node
+                        git: https://github.com/NucleiStudio/governance-os
+                        branch: master
+                        package: governance-os-node
+                        name: governance-os
 
         runs-on: ubuntu-latest
         steps:
