@@ -36,6 +36,8 @@ FROM ubuntu
 
 COPY --from=builder /node /usr/local/bin
 
+# install curl in the event we want to interact with the local rpc
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y curl
 RUN useradd --create-home runner
 
 USER runner
