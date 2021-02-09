@@ -25,6 +25,7 @@ roc-monitoring-grafana:
     prometheus-endpoint: <- "http://" get-hostname("eteissonniere/roc-monitoring-prometheus", "prometheus") ":9090" concat-all
 
 roc:
+  defines: process-group
   runnable-list:
     - eteissonniere/roc-alice
     - eteissonniere/roc-bob
