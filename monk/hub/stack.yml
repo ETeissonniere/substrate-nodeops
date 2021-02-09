@@ -1,0 +1,32 @@
+namespace: /eteissonniere
+
+roc-alice:
+  defines: runnable
+  inherits: ./roc-substrate
+  variables:
+    cmds: "--alice --node-key 0000000000000000000000000000000000000000000000000000000000000001"
+
+roc-bob:
+  defines: runnable
+  inherits: ./roc-substrate
+  variables:
+    cmds: <- "--bob --bootnodes '/ip4/" get-hostname("eteissonniere/roc-alice", "node") "/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR'" concat-all
+
+roc-monitoring-prometheus:
+  defines: runnable
+  inherits: ./prometheus
+  variables:
+    target-nodes: <- get-hostname("eteissonniere/roc-alice", "node") `:${node-port}` " " get-hostname("eteissonniere/roc-bob", "node") `:${node-port}` concat-all
+
+roc-monitoring-grafana:
+  defines: runnable
+  inherits: ./grafana
+  variables:
+    prometheus-endpoint: <- "http://" get-hostname("eteissonniere/roc-monitoring-prometheus", "prometheus") ":9090" concat-all
+
+roc:
+  runnable-list:
+    - eteissonniere/roc-alice
+    - eteissonniere/roc-bob
+    - eteissonniere/roc-monitoring-prometheus
+    - eteissonniere/roc-monitoring-grafana
