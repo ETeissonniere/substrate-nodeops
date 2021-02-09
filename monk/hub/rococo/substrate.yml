@@ -5,7 +5,6 @@ roc-substrate:
   defines: runnable
   inherits: ./substrate
   containers:
-    defines: containers
     node:
       image: parity/rococo
       image-tag: rococo-v1
@@ -17,6 +16,7 @@ roc-substrate:
   files:
     defines: files
     chainspec:
+      container: node
       path: /spec.json
       contents: |
         {
