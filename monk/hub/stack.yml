@@ -31,3 +31,23 @@ roc:
     - eteissonniere/roc-bob
     - eteissonniere/roc-monitoring-prometheus
     - eteissonniere/roc-monitoring-grafana
+
+roc-alice-local:
+  defines: runnable
+  inherits: ./roc-alice
+
+roc-bob-local:
+  defines: runnable
+  inherits: ./roc-bob
+  variables:
+    wsrpc-port: 9945
+    p2p-port: 30334
+    prometheus-port: 9616
+
+roc-local:
+  defines: process-group
+  runnable-list:
+    - eteissonniere/roc-alice-local
+    - eteissonniere/roc-bob-local
+    - eteissonniere/roc-monitoring-prometheus
+    - eteissonniere/roc-monitoring-grafana
