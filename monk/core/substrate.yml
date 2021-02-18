@@ -7,7 +7,7 @@ substrate:
       image: docker.io/eteissonniere/polkadot
       image-tag: latest
       user: root
-      entrypoint: <- `${bin} --wasm-execution compiled --name ${node-name} --unsafe-ws-external --unsafe-rpc-external --rpc-external --rpc-cors all --ws-external --ws-port ${wsrpc-port} --port ${p2p-port} --chain ${chain} --prometheus-external --prometheus-port ${prometheus-port} -d /data ${opts}`
+      entrypoint: <- `${bin} --wasm-execution compiled --name ${node-name} --unsafe-ws-external --unsafe-rpc-external --rpc-external --rpc-cors all --ws-external --ws-port ${wsrpc-port} --port ${p2p-port} --chain ${chain} --prometheus-external --prometheus-port ${prometheus-port} -d /data ${cmds}`
       paths:
         - <- `${moncc-volume-path}/${node-name}:/data`
       ports:
