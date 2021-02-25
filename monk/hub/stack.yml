@@ -4,12 +4,14 @@ roc-alice:
   defines: runnable
   inherits: ./roc-substrate
   variables:
+    node-name: roc-alice
     cmds: "--alice --node-key 0000000000000000000000000000000000000000000000000000000000000001"
 
 roc-bob:
   defines: runnable
   inherits: ./roc-substrate
   variables:
+    node-name: roc-bob
     cmds: <- "--bob --bootnodes /dns/" get-hostname("eteissonniere/roc-alice", "node") "/tcp/30333/p2p/12D3KooWEyoppNCUx8Yx66oV9fJnriXwCcXwDDUA2kj6vnc6iDEp" concat-all
 
 roc-monitoring-prometheus:
