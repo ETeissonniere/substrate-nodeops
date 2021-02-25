@@ -10,7 +10,7 @@ roc-bob:
   defines: runnable
   inherits: ./roc-substrate
   variables:
-    cmds: <- "--bob --bootnodes '/ip4/" get-hostname("eteissonniere/roc-alice", "node") "/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR'" concat-all
+    cmds: <- "--bob --bootnodes /dns/" get-hostname("eteissonniere/roc-alice", "node") "/tcp/30333/p2p/12D3KooWEyoppNCUx8Yx66oV9fJnriXwCcXwDDUA2kj6vnc6iDEp" concat-all
 
 roc-monitoring-prometheus:
   defines: runnable
@@ -43,6 +43,7 @@ roc-bob-local:
     wsrpc-port: 9945
     p2p-port: 30334
     prometheus-port: 9616
+    cmds: <- "--bob --bootnodes /dns/" get-hostname("eteissonniere/roc-alice-local", "node") "/tcp/30333/p2p/12D3KooWEyoppNCUx8Yx66oV9fJnriXwCcXwDDUA2kj6vnc6iDEp" concat-all
 
 roc-local:
   defines: process-group
