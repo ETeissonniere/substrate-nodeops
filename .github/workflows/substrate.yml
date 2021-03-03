@@ -42,6 +42,13 @@ jobs:
                         name: polkadot
                         tag: latest
                     -
+                        binary: polkadot
+                        git: https://github.com/paritytech/polkadot
+                        branch: rococo-v1
+                        package: polkadot
+                        name: polkadot
+                        tag: rococo-v1
+                    -
                         binary: edgeware
                         git: https://github.com/hicommonwealth/edgeware-node
                         branch: master
