@@ -28,13 +28,6 @@ jobs:
                         name: nodle-chain
                         tag: latest
                     -
-                        binary: nodle-chain
-                        git: https://github.com/NodleCode/chain
-                        branch: eliott/parachain
-                        package: nodle-chain
-                        name: nodle-chain
-                        tag: rococo
-                    -
                         binary: polkadot
                         git: https://github.com/paritytech/polkadot
                         branch: master
