@@ -55,6 +55,13 @@ jobs:
                         package: governance-os-node
                         name: governance-os
                         tag: latest
+                    -
+                        binary: kodadot
+                        git: https://github.com/kodadot/metaprime.network
+                        branch: master
+                        package: kodadot
+                        name: metaprime
+                        tag: latest
 
         runs-on: ubuntu-latest
         steps:
