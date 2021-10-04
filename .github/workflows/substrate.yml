@@ -62,6 +62,13 @@ jobs:
                         package: kodadot
                         name: metaprime
                         tag: latest
+                    -
+                        binary: polkadot-collator
+                        git: https://github.com/paritytech/cumulus
+                        branch: master
+                        package: polkadot-collator
+                        name: statemine
+                        tag: latest
 
         runs-on: ubuntu-latest
         steps:
