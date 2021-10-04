@@ -62,6 +62,13 @@ jobs:
                         package: polkadot-collator
                         name: statemine
                         tag: polkadot-v0.9.9
+                    -
+                        binary: polkadot-collator
+                        git: https://github.com/paritytech/cumulus
+                        branch: master
+                        package: polkadot-collator
+                        name: statemine
+                        tag: latest
 
         runs-on: ubuntu-latest
         steps:
