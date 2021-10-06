@@ -27,6 +27,7 @@ jobs:
                         package: nodle-chain
                         name: nodle-chain
                         tag: latest
+                        flags:
                     -
                         binary: polkadot
                         git: https://github.com/paritytech/polkadot
@@ -34,6 +35,7 @@ jobs:
                         package: polkadot
                         name: polkadot
                         tag: latest
+                        flags:
                     -
                         binary: edgeware
                         git: https://github.com/hicommonwealth/edgeware-node
@@ -41,6 +43,7 @@ jobs:
                         package: edgeware-cli
                         name: edgeware
                         tag: latest
+                        flags:
                     -
                         binary: governance-os-node
                         git: https://github.com/NucleiStudio/governance-os
@@ -48,6 +51,7 @@ jobs:
                         package: governance-os-node
                         name: governance-os
                         tag: latest
+                        flags:
                     -
                         binary: kodadot
                         git: https://github.com/kodadot/metaprime.network
@@ -55,13 +59,15 @@ jobs:
                         package: kodadot
                         name: metaprime
                         tag: latest
+                        flags:
                     -
                         binary: polkadot-collator
                         git: https://github.com/paritytech/cumulus
                         branch: polkadot-v0.9.9
                         package: polkadot-collator
                         name: statemine
-                        tag: polkadot-v0.9.9                        
+                        tag: polkadot-v0.9.9
+                        flags:                       
                     -
                         binary: polkadot-collator
                         git: https://github.com/paritytech/cumulus
@@ -69,6 +75,7 @@ jobs:
                         package: polkadot-collator
                         name: statemine
                         tag: polkadot-v0.9.10
+                        flags:
                     -
                         binary: polkadot-collator
                         git: https://github.com/paritytech/cumulus
@@ -76,6 +83,7 @@ jobs:
                         package: polkadot-collator
                         name: statemine
                         tag: latest
+                        flags:
 
         runs-on: ubuntu-latest
         steps:
@@ -107,3 +115,4 @@ jobs:
                         GIT_BRANCH=${{ matrix.branch }}
                         PACKAGE_NAME=${{ matrix.package }}
                         BINARY_NAME=${{ matrix.binary }}
+                        FLAGS=${{ matrix.flags }}

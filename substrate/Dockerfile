@@ -7,6 +7,7 @@ ARG GIT_REPO
 ARG GIT_BRANCH
 ARG BINARY_NAME
 ARG PACKAGE_NAME
+ARG FLAGS
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     clang \
@@ -25,7 +26,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     rustup default stable && \
     rustup toolchain install nightly && \	
     rustup target add wasm32-unknown-unknown --toolchain nightly && \
-    cargo build -p ${PACKAGE_NAME} --${PROFILE} && \
+    cargo build -p ${PACKAGE_NAME} --${PROFILE} ${FLAGS} && \
     cp target/${PROFILE}/${BINARY_NAME} /node
 
 # ===== SECOND STAGE ======
