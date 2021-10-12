@@ -70,7 +70,7 @@ jobs:
                         flags:                       
                     -
                         binary: polkadot-collator
-                        git: https://github.com/paritytech/cumulus
+                        git: https://github.com/ayushmishra2005/cumulus
                         branch: polkadot-v0.9.10
                         package: polkadot-collator
                         name: statemine
