@@ -70,8 +70,8 @@ jobs:
                         flags:                       
                     -
                         binary: polkadot-collator
-                        git: https://github.com/ayushmishra2005/cumulus
-                        branch: polkadot-v0.9.10
+                        git: https://github.com/ayushmishra2005/cumulus-0.9.10
+                        branch: main
                         package: polkadot-collator
                         name: statemine
                         tag: polkadot-v0.9.10
