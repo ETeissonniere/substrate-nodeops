@@ -21,10 +21,10 @@ jobs:
                     # `name` is the name of the docker container to push
 
                     -
-                        binary: nodle-chain
+                        binary: nodle-parachain
                         git: https://github.com/NodleCode/chain
                         branch: master
-                        package: nodle-chain
+                        package: nodle-parachain
                         name: nodle-chain
                         tag: latest
                         flags:
@@ -42,54 +42,6 @@ jobs:
                         branch: master
                         package: edgeware-cli
                         name: edgeware
-                        tag: latest
-                        flags:
-                    -
-                        binary: governance-os-node
-                        git: https://github.com/NucleiStudio/governance-os
-                        branch: master
-                        package: governance-os-node
-                        name: governance-os
-                        tag: latest
-                        flags:
-                    -
-                        binary: kodadot
-                        git: https://github.com/kodadot/metaprime.network
-                        branch: master
-                        package: kodadot
-                        name: metaprime
-                        tag: latest
-                        flags:
-                    -
-                        binary: polkadot-collator
-                        git: https://github.com/paritytech/cumulus
-                        branch: polkadot-v0.9.9
-                        package: polkadot-collator
-                        name: statemine
-                        tag: polkadot-v0.9.9
-                        flags:                       
-                    -
-                        binary: polkadot-collator
-                        git: https://github.com/ayushmishra2005/cumulus-0.9.10
-                        branch: main
-                        package: polkadot-collator
-                        name: statemine
-                        tag: polkadot-v0.9.10
-                        flags:
-                    -
-                        binary: polkadot-collator
-                        git: https://github.com/ayushmishra2005/cumulus-0.9.11
-                        branch: main
-                        package: polkadot-collator
-                        name: statemine
-                        tag: polkadot-v0.9.11
-                        flags:
-                    -
-                        binary: polkadot-collator
-                        git: https://github.com/paritytech/cumulus
-                        branch: master
-                        package: polkadot-collator
-                        name: statemine
                         tag: latest
                         flags:
 
